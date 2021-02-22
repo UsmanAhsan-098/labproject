@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lab task</title>
+    <script src="https://unpkg.com/vue"> </script>
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>{{sitename}}</h1>
+        </header>
+        <main>
+            <figure>
+                <img v-bind:src="product.image" width="200" height="200">
+            </figure>
+            <h2 v-html="product.title"></h2>
+            <P>Location: {{product.location}}</P>
+            <p>Price: {{product.price}}</p>
+            <P>Number of spaces: {{product.availableInventory}}</P>
+            <button v-on:click="removefromcart"> Add to cart </button>
+        </main>
+    </div>
+
+
+
+
+
+    <script type="text/javascript">
+    var webstore = new Vue({
+        el:"#app",
+        data: {
+            sitename: "After School Club",
+            product: {
+                id: 1001,
+                title: "<b>Maths</b>",
+                location: "London",
+                price: 100,
+                image: "math logo.png",
+                availableInventory: 5
+            },
+            
+        },
+        methods:{
+            removefromcart: function(){
+                if(this.product.availableInventory>0){
+                    this.product.availableInventory = this.product.availableInventory - 1;
+                
+                }
+                else{
+                    alert("already zero")
+                }
+            }
+        },
+        
+    });
+
+    </script>
+    
+</body>
+</html>
